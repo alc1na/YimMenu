@@ -331,15 +331,15 @@ namespace big
                 g_pointers->m_gta.m_network_object_mgr = ptr.add(3).rip().as<CNetworkObjectMgr**>();
             }
         },
-        //// Network Player Mgr Init
-        //{
-        //    "NPMI",
-        //    "41 56 48 83 EC ? 48 8B F1 B9 ? ? ? ? 49 8B F9 41 8B E8 4C 8B F2 E8",
-        //    [](memory::handle ptr)
-        //    {
-        //        g_pointers->m_gta.m_network_player_mgr_init = ptr.sub(0x13).as<decltype(gta_pointers::m_network_player_mgr_init)>();
-        //    }
-        //},
+        // Network Player Mgr Init
+        {
+            "NPMI",
+            "57 41 54 41 55 41 56 41 57 48 83 EC 40 48 8B F1 B9 07 00 00 00",
+            [](memory::handle ptr)
+            {
+                g_pointers->m_gta.m_network_player_mgr_init = ptr.sub(0x13).as<decltype(gta_pointers::m_network_player_mgr_init)>();
+            }
+        },
         // Network Player Mgr Shutdown
         {
             "NPMS",
