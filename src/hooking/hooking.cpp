@@ -47,7 +47,7 @@ namespace big
 		detour_hook_helper::add<hooks::init_native_tables>("INT", g_pointers->m_gta.m_init_native_tables);
 		detour_hook_helper::add<hooks::script_vm>("SVM", g_pointers->m_gta.m_script_vm);
 
-		detour_hook_helper::add<hooks::network_player_mgr_init>("NPMI", g_pointers->m_gta.m_network_player_mgr_init);
+		//detour_hook_helper::add<hooks::network_player_mgr_init>("NPMI", g_pointers->m_gta.m_network_player_mgr_init);
 		detour_hook_helper::add<hooks::network_player_mgr_shutdown>("NPMS", g_pointers->m_gta.m_network_player_mgr_shutdown);
 
 		detour_hook_helper::add<hooks::received_event>("RE", g_pointers->m_gta.m_received_event);
