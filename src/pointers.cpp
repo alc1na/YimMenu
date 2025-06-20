@@ -1160,14 +1160,22 @@ namespace big
                 g_pointers->m_gta.m_handle_chat_message = ptr.as<functions::handle_chat_message>();
             }
         },
-        // Language & Update Language
+        // Language
         {
-            "L&UL",
+            "L",
             "83 3D ? ? ? ? ? 44 8B C3",
             [](memory::handle ptr)
             {
                 g_pointers->m_gta.m_language = ptr.add(2).rip().add(1).as<eGameLanguage*>();
-                g_pointers->m_gta.m_update_language = ptr.add(0x38).rip().as<functions::update_language>();
+            }
+        },
+        // Update Language
+        {
+            "UL",
+            "84 C0 B1 01",
+            [](memory::handle ptr)
+            {
+                g_pointers->m_gta.m_update_language = ptr.add(0x11).rip().as<functions::update_language>();
             }
         },
         // Get Host Array Handler By Index
