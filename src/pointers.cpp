@@ -3,7 +3,7 @@
 #include "gta_pointers_layout_info.hpp"
 #include "sc_pointers_layout_info.hpp"
 
-#define GTA_VERSION_TARGET "1.71-3570"
+#define GTA_VERSION_TARGET "1.71-3570.0"
 
 namespace big
 {
@@ -558,10 +558,10 @@ namespace big
         // Send Chat Message
         {
             "SCM",
-            "48 81 EC 80 00 00 00 4C 8B F1 48 8D 99 98 00 00 00 48 8B CA",
+            "45 8A F9 4D 8B E0 48 8B EA",
             [](memory::handle ptr)
             {
-                g_pointers->m_gta.m_send_chat_message = ptr.sub(21).as<functions::send_chat_message>();
+                g_pointers->m_gta.m_send_chat_message = ptr.sub(0x2D).as<functions::send_chat_message>();
             }
         },
         // Get Gamer Online State
@@ -639,10 +639,10 @@ namespace big
         // Handle Join Request (partially obfuscated now, crutches deployed)
         {
             "HJR",
-            "48 83 EC 38 83 64 24 20 00 E8 06 00 00 00 48 83 C4 38 C3",
+            "4C 8B F1 45 33 ED 48 8D 4D",
             [](memory::handle ptr)
             {
-                g_pointers->m_gta.m_handle_join_request = ptr.add(0xA).rip().as<PVOID>();
+                g_pointers->m_gta.m_handle_join_request = ptr.sub(0x2D).as<PVOID>();
             }
         },
         // Write Join Response Data
@@ -1754,7 +1754,7 @@ namespace big
         // Session Request Patch
         {
             "SRP",
-            "45 38 BE 48 B7 00 00 0F 84 A4 00 00 00",
+            "45 38 8E 48 B7 00 00 0F 85 43 FE FF FF",
             [](memory::handle ptr)
             {
                 g_pointers->m_gta.m_session_request_patch = ptr.add(0x14).as<PVOID>();
@@ -1903,7 +1903,7 @@ namespace big
             "E9 89 01 00 00 48 8B CF E8 13 A3 04 00",
             [](memory::handle ptr)
             {
-                g_pointers->m_gta.m_network_can_access_multiplayer = ptr.add(1).rip().as<PVOID>();
+                g_pointers->m_gta.m_network_can_access_multiplayer = ptr.add(0x23).rip().as<PVOID>();
             }
         },
         // BattlEye Network Bail Patch
